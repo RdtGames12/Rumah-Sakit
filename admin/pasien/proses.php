@@ -2,7 +2,7 @@
 include "../../koneksi/koneksi.php";
 
 if(isset($_POST['add'])){
-    $uuid = random_bytes(20);
+    $uuid = rand();
     $nama_pasien = trim(mysqli_real_escape_string($con, $_POST['nama_pasien']));
     $marga = trim(mysqli_real_escape_string($con, $_POST['marga']));
     $alamat = trim(mysqli_real_escape_string($con, $_POST['alamat']));
