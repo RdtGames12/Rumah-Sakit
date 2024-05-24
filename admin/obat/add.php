@@ -99,7 +99,7 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
-    <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link collapsed" href="../index.php">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
@@ -107,7 +107,7 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link" data-bs-target="#components-nav" href="index.html">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" href="../pasien/">
           <i class="bi bi-journal-text"></i><span>Data Pasien</span>
         </a>
       </li><!-- End Components Nav -->
@@ -127,7 +127,7 @@
       </li><!-- End Tables Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#charts-nav" href="../obat/">
+        <a class="nav-link" data-bs-target="#charts-nav" href="index.html">
           <i class="bi bi-journal-text"></i><span>Data Obat</span>
         </a>
         
@@ -139,6 +139,7 @@
         </a>
 
       </li><!-- End Icons Nav -->
+
     </ul>
 
   </aside><!-- End Sidebar-->
@@ -147,47 +148,114 @@
 
 
   <div class="page has-sidebar-left height-full">
-        <header class="blue accent-3 relative nav-sticky">
-            <div class="container-fluid text-white">
-                <div class="row p-t-b-10 ">
-                    <div class="col">
-                        <h4 style="color: black;">
-                            Tambah Pasien
-                        </h4>
-                    </div>
+    <header class="blue accent-3 relative nav-sticky">
+        <div class="container-fluid text-white">
+            <div class="row p-t-b-10 ">
+                <div class="col">
+                    <h4 style="color: black;">
+                        Tambah Obat Baru
+                    </h4>
                 </div>
             </div>
-        </header>
-        <div class="container-fluid relative animatedParent animateOnce">
-            <div class="tab-content pb-3" id="v-pills-tabContent">
-                <div class="col-md-12">
-                    <div class="card my-3 no-b">
-                        <div class="card-header white m-3">
-                            <h6>Import Data Pasien</h6>
-                        </div>
-                        <div class="card-body">
-                            <form action="proses " method="post" enctype="multipart/form-data">
-                                <h6>
-                                    <a href="../_file/contoh_import_data_pasien.xlsx" style="color: #0fa3b1;font-weight:normal">Download Contoh File</a>
-                                </h6>
-                                <br>
-                                <h6>File Excel : </h6>
-                                <div class="input-group">
-                                    <input type="file" name="file" id="file" class="form-control" required>
-                                </div>
-                                <div class="row clearfix">
-                                    <div class="center">
-                                        <a href="<?=base_url('pasien/')?>" class="btn btn-danger mt-2">Kembali</a>
-                                        <input type="submit" value="import" name="import" class="btn btn-success mt-2">
+        </div>
+    </header>
+    <div class="container-fluid relative animatedParent animateOnce">
+        <div class="container-fluid my-3">
+            <div class="row">
+                <div class="col-md-8 center">
+                    <div class="card shadow-sm">
+                        <div class="card-body b-b">
+                            <h4>Detail Obat</h4>
+                            <form class="form-material" action="proses.php" method="post">
+                                <!-- Input -->
+                                <div class="body">
+                                    <h6>Nama obat</h6>
+                                    <div class="row clearfix">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="text" name="nama_obat" id="nama_obat" class="form-control" placeholder="Nama obat" autofocus required />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h6>Keterangan</h6>
+                                    <div class="row clearfix">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="text" name="keterangan" id="keterangan" class="form-control" placeholder="Keterangan" required/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h6>Obat</h6>
+                                    <div class="row clearfix">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <select name="jenis" id="jenis" class="form-control">
+                                                        <option>injeksi</option>
+                                                        <option>kapsul</option>
+                                                        <option>sirup</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="number" name="dosis" id="dosis" class="form-control" placeholder="dosis" required />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <select name="satuan" id="satuan" class="form-control">
+                                                        <option>g</option>
+                                                        <option>kg</option>
+                                                        <option>ml</option>
+                                                        <option>l</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h6>Stok</h6>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="number" name="stok" id="stok" class="form-control" placeholder="stok" required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h6>Kadaluarsa</h6>
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="date" name="kadaluarsa" id="kadaluarsa" class="form-control" placeholder="<?=date('Y-m-d')?>" required />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row clearfix">
+                                        <div class="center">
+                                            <input type="submit" name="add" value="Simpan" class="btn btn-primary mt-2">
+                                        </div>
                                     </div>
                                 </div>
-                            </form>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+</div>
+
 
   </main><!-- End #main -->
 

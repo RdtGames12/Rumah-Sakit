@@ -99,7 +99,7 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
-    <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link collapsed" href="../index.php">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
@@ -107,7 +107,7 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link" data-bs-target="#components-nav" href="index.html">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" href="../pasien/">
           <i class="bi bi-journal-text"></i><span>Data Pasien</span>
         </a>
       </li><!-- End Components Nav -->
@@ -127,7 +127,7 @@
       </li><!-- End Tables Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#charts-nav" href="../obat/">
+        <a class="nav-link" data-bs-target="#charts-nav" href="index.html">
           <i class="bi bi-journal-text"></i><span>Data Obat</span>
         </a>
         
@@ -139,6 +139,7 @@
         </a>
 
       </li><!-- End Icons Nav -->
+
     </ul>
 
   </aside><!-- End Sidebar-->
@@ -152,7 +153,7 @@
                 <div class="row p-t-b-10 ">
                     <div class="col">
                         <h4 style="color: black;">
-                            Tambah Pasien
+                            Obat
                         </h4>
                     </div>
                 </div>
@@ -163,31 +164,61 @@
                 <div class="col-md-12">
                     <div class="card my-3 no-b">
                         <div class="card-header white m-3">
-                            <h6>Import Data Pasien</h6>
+                            <h6>Data Obat</h6>
                         </div>
                         <div class="card-body">
-                            <form action="proses " method="post" enctype="multipart/form-data">
-                                <h6>
-                                    <a href="../_file/contoh_import_data_pasien.xlsx" style="color: #0fa3b1;font-weight:normal">Download Contoh File</a>
-                                </h6>
-                                <br>
-                                <h6>File Excel : </h6>
-                                <div class="input-group">
-                                    <input type="file" name="file" id="file" class="form-control" required>
-                                </div>
-                                <div class="row clearfix">
-                                    <div class="center">
-                                        <a href="<?=base_url('pasien/')?>" class="btn btn-danger mt-2">Kembali</a>
-                                        <input type="submit" value="import" name="import" class="btn btn-success mt-2">
-                                    </div>
-                                </div>
-                            </form>
+                            <table class="table cell-vertical-align-middle  table-responsive mb-4">
+                                <tbody>
+                                <tr class="no-b">
+                                    <td>
+                                        <a href="add.php" type="button" class="btn btn-success btn-sm">Tambah Obat</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table id="datatables-button" class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>Keterangan</th>
+                                    <th>Dosis</th>
+                                    <th>Jenis</th>
+                                    
+                                    <th>Kadaluarsa</th>
+                                    <th><i class="icon icon-settings2"></i></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                $no = 1;
+                                $sql_obat = mysqli_query($con, "SELECT * FROM tb_obat") or die (mysqli_error($con));
+                                while($data = mysqli_fetch_array($sql_obat)) { ?>
+                                <tr>
+                                    <td><?=$no++ ?>.</td>
+                                    <td><?=$data['nama_obat']?></td>
+                                    <td><?=$data['keterangan']?></td>
+                                    <td><?=$data['dosis']?></td>
+                                    <td><?=$data['jenis']?></td>
+                                    
+                                    <td><?=tgl_indo($data['kadaluarsa'])?></td>
+                                    <td>
+                                        <a href="edit.php?id=<?=$data['id_obat']?>" onclick="return confirm('apakah anda yakin ingin mengubah data ini?')" class="btn btn-primary btn-sm text-white"><i class="glyphicon glyphicon-edit">EDIT</i></a>
+                                        <a href="del.php?id=<?=$data['id_obat']?>" onclick="return confirm('apakah anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm text-white"><i class="glyphicon glyphicon-trash">HAPUS</i></a>
+                                    </td>
+                                    <?php
+                                    }
+                                    ?>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
   </main><!-- End #main -->
 

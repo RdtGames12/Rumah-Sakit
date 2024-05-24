@@ -1,5 +1,5 @@
 <?php
-require_once "../_config/config.php";
+include "../../koneksi/koneksi.php";
 $chk = $_POST['checked'];
 if (!isset($chk)) {
     echo "<script>alert('Tidak Ada Data Yang Dipilih'); window.location='data.php'</script>";
