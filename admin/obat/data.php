@@ -186,6 +186,7 @@
                                     <th>Jenis</th>
                                     
                                     <th>Kadaluarsa</th>
+                                    <th></th>
                                     <th><i class="icon icon-settings2"></i></th>
                                 </tr>
                                 </thead>
@@ -202,6 +203,7 @@
                                     <td><?=$data['jenis']?></td>
                                     
                                     <td><?=tgl_indo($data['kadaluarsa'])?></td>
+                                    <td><a href="details.php?id=<?=$data['id_obat']?>">Lihat Detail</a></td>
                                     <td>
                                         <a href="edit.php?id=<?=$data['id_obat']?>" onclick="return confirm('apakah anda yakin ingin mengubah data ini?')" class="btn btn-primary btn-sm text-white"><i class="glyphicon glyphicon-edit">EDIT</i></a>
                                         <a href="del.php?id=<?=$data['id_obat']?>" onclick="return confirm('apakah anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm text-white"><i class="glyphicon glyphicon-trash">HAPUS</i></a>

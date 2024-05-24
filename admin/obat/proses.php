@@ -7,10 +7,12 @@ if(isset($_POST['add'])){
     $jenis = trim(mysqli_real_escape_string($con, $_POST['jenis']));
     $dosis = trim(mysqli_real_escape_string($con, $_POST['dosis']));
     $satuan = trim(mysqli_real_escape_string($con, $_POST['satuan']));
+    $dosat = $dosis . $satuan;
+    $stok = trim(mysqli_real_escape_string($con, $_POST['stok']));
    
     
     $kadaluarsa= trim(mysqli_real_escape_string($con, $_POST['kadaluarsa']));
-    mysqli_query($con, "INSERT INTO tb_obat (id_obat, nama_obat, keterangan, jenis, dosis,  kadaluarsa) values ('$uuid','$nama_obat', '$keterangan','$jenis', '$kadaluarsa')") or die (mysqli_error($con));
+    mysqli_query($con, "INSERT INTO tb_obat (id_obat, nama_obat, keterangan, jenis, dosis, kadaluarsa) values ('$uuid','$nama_obat', '$keterangan','$jenis', '$dosat', '$kadaluarsa')") or die (mysqli_error($con));
     echo "<script>window.location='data.php';</script>";
 
 } else if(isset($_POST['edit'])) {
@@ -20,10 +22,12 @@ if(isset($_POST['add'])){
     $jenis = trim(mysqli_real_escape_string($con, $_POST['jenis']));
     $dosis = trim(mysqli_real_escape_string($con, $_POST['dosis']));
     $satuan = trim(mysqli_real_escape_string($con, $_POST['satuan']));
+    $dosat = $dosis . $satuan;
+    $stok = trim(mysqli_real_escape_string($con, $_POST['stok']));
     
     
     $kadaluarsa= trim(mysqli_real_escape_string($con, $_POST['kadaluarsa']));
-    mysqli_query($con, "UPDATE tb_obat SET nama_obat='$nama_obat', keterangan='$keterangan',jenis='$jenis',dosis='$total', kadaluarsa='$kadaluarsa' WHERE id_obat='$id'") or die (mysqli_error($con));
+    mysqli_query($con, "UPDATE tb_obat SET nama_obat='$nama_obat', keterangan='$keterangan',jenis='$jenis',dosis='$dosat',stok='$stok', kadaluarsa='$kadaluarsa' WHERE id_obat='$id'") or die (mysqli_error($con));
     echo "<script>window.location='data.php';</script>";
     
 }
