@@ -1,4 +1,8 @@
 <?php
+session_start();
+if ($_SESSION['role'] != 'dokter') {
+  header("location:../../index.php");
+}
     include "../../koneksi/koneksi.php";
     function tgl_indo($tgl) {
     $tanggal = substr($tgl, 8, 2);

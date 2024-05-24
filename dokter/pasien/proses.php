@@ -1,4 +1,8 @@
 <?php 
+session_start();
+if ($_SESSION['role'] != 'dokter') {
+  header("location:../../index.php");
+}
 include "../../koneksi/koneksi.php";
 
 if(isset($_POST['add'])){
