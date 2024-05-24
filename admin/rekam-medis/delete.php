@@ -1,4 +1,8 @@
 <?php 
+session_start();
+if ($_SESSION['role'] != 'admin') {
+  header("location:../../index.php");
+}
 include "../../koneksi/koneksi.php";
 
 mysqli_query($con, "DELETE FROM tb_rekammedis WHERE id_rekammedis = '$_GET[id]'") or die (mysqli_error($con));
