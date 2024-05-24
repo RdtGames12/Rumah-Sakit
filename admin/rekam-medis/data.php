@@ -168,13 +168,6 @@
                         </div>
                         <div class="card-body">
                             <table class="table cell-vertical-align-middle  table-responsive mb-4">
-                                <tbody>
-                                <tr class="no-b">
-                                    <td>
-                                        <a href="add1.php" type="button" class="btn btn-success btn-sm">Tambah Rekammedis</a>
-                                    </td>
-                                </tr>
-                                </tbody>
                             </table>
                             <table id="datatables-button" class="table table-bordered table-hover">
                                 <thead>

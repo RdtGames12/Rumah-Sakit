@@ -1,8 +1,6 @@
 
 <?php
-require_once "../_config/config.php";
-include_once('../_header.php');
-
+include "../../koneksi/koneksi.php";
 
 ?>
     <div class="box">
@@ -140,6 +138,3 @@ include_once('../_header.php');
     </div>
     
 
-<?php
-include_once('../_footer.php');
-?>

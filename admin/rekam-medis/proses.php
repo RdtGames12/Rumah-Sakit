@@ -20,5 +20,20 @@ if(isset($_POST['add'])){
     }
     echo "<script>window.location='data.php';</script>";
 
+} elseif(isset($_POST['edit'])){
+    $id = $_GET['id'];
+    $pasien = trim(mysqli_real_escape_string($con, $_POST['pasien']));
+    $keluhan = trim(mysqli_real_escape_string($con, $_POST['keluhan']));
+    $dokter = trim(mysqli_real_escape_string($con, $_POST['dokter']));
+    $diagnosa = trim(mysqli_real_escape_string($con, $_POST['diagnosa']));
+    $klinik = trim(mysqli_real_escape_string($con, $_POST['klinik']));
+    $tgl = trim(mysqli_real_escape_string($con, $_POST['tgl']));
+    mysqli_query($con, "UPDATE tb_rekammedis SET id_pasien='$pasien',keluhan='$keluhan',id_dokter='$dokter',diagnosa='$diagnosa',id_klinik='$klinik',tanggal_periksa='$tgl' WHERE id_rekammedis='$id'") or die (mysqli_error($con));
+
+    $obat = $_POST['obat'];
+    foreach($obat as $ob){
+        mysqli_query($con, "UPDATE tb_rekammedis_obat SET id_obat='$ob' WHERE id_rekammedis = '$id'") or die (mysqli_error($con));
+    }
+    echo "<script>window.location='data.php';</script>";
 }
 ?>
