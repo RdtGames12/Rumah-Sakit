@@ -106,7 +106,12 @@ include "../koneksi/koneksi.php";
           <i class="bi bi-journal-text"></i><span>Data Pasien</span>
         </a>
       </li><!-- End Components Nav -->
+      <li class="nav-item">
+        <a class="nav-link" data-bs-target="#icons-nav" href="rekam-medis/">
+          <i class="bi bi-journal-text"></i><span>Rekam Medis</span>
+        </a>
 
+      </li><!-- End Icons Nav -->
     </ul>
 
   </aside><!-- End Sidebar-->

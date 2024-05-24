@@ -72,7 +72,7 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="../../assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">Dokter</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">Admin</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -107,17 +107,16 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link" data-bs-target="#components-nav" href="index.html">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" href="../pasien/">
           <i class="bi bi-journal-text"></i><span>Data Pasien</span>
         </a>
       </li><!-- End Components Nav -->
+
+
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#icons-nav" href="../rekam-medis/">
+        <a class="nav-link" data-bs-target="#icons-nav" href="index.html">
           <i class="bi bi-journal-text"></i><span>Rekam Medis</span>
         </a>
-
-      </li><!-- End Icons Nav -->
-      
 
       </li><!-- End Icons Nav -->
 
@@ -128,66 +127,83 @@
   <main id="main" class="main">
 
 
-<div class="page has-sidebar-left height-full">
-    <header class="blue accent-3 relative nav-sticky">
-        <div class="container-fluid text-white">
-            <div class="row p-t-b-10 ">
-                <div class="col">
-                    <h4 style="color: black;">
-                        Pasien
-                    </h4>
+  <div class="page has-sidebar-left height-full">
+        <header class="blue accent-3 relative nav-sticky">
+            <div class="container-fluid text-white">
+                <div class="row p-t-b-10 ">
+                    <div class="col">
+                        <h4 style="color: black;">
+                            Rekam Medis
+                        </h4>
+                    </div>
                 </div>
             </div>
-        </div>
-    </header>
-    <div class="container-fluid relative animatedParent animateOnce">
-        <div class="tab-content pb-3" id="v-pills-tabContent">
-            <div class="col-md-12">
-                <div class="card my-3 no-b">
-                    <div class="card-header white m-3">
-                        <h6>Data Pasien</h6>
-                    </div>
-                    <div class="card-body">
-                        <table class="table cell-vertical-align-middle  table-responsive mb-4">
-                            
-                        </table>
-                        <table id="datatables-button" class="table table-bordered table-hover">
-                            <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama</th>
-                                <th>Lahir</th>
-                                <th>Alamat</th>
-                                <th>Lainnya</th>
-                                <th><i class="icon icon-settings2"></i></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                            $no = 1;
-                            $sql_pasien = mysqli_query($con, "SELECT * FROM tb_pasien WHERE status=''") or die (mysqli_error($con));
-                            while($data = mysqli_fetch_array($sql_pasien)) { ?>
-                            <tr>
-                                    <td><?=$no++ ?>.</td>
-                                    <td><?=$data['nama_pasien']?></td>
-                                    <td><?=$data['tempat_lahir']?>, <?=tgl_indo($data['tgl_lahir'])?></td>
-                                    <td><?=$data['alamat']?></td>
-                                    <td><a href="details.php?id=<?=$data['id_pasien']?>" class="btn btn-link btn-sm">Lihat Detail</a></td>
-                                    <td>
-                                        <a href="add.php?id=<?=$data['id_pasien']?>" class="btn btn-danger btn-sm text-white"><i class="glyphicon glyphicon-trash">Proses</i></a>
-                                    </td>
+        </header>
+        <div class="container-fluid relative animatedParent animateOnce">
+            <div class="tab-content pb-3" id="v-pills-tabContent">
+                <div class="col-md-12">
+                    <div class="card my-3 no-b">
+                        <div class="card-header white m-3">
+                            <h6>Data Rekam Medis</h6>
+                        </div>
+                        <div class="card-body">
+                            <table class="table cell-vertical-align-middle  table-responsive mb-4">
+                            </table>
+                            <table id="datatables-button" class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Nama Pasien</th>
+                                    <th>Keluhan</th>
+                                    <th>Nama Dokter</th>
+                                   
+                                    <th>Diagnosa</th>
+                                    <th>Poliklinik</th>
+                                    <th>Data Obat</th>
+                                    <th>Tanggal Periksa</th>
+                                    
+                                </tr>
+                                </thead>
+                                <tbody>
                                 <?php
-                                }
-                                ?>
-                            </tr>
-                            </tbody>
-                        </table>
+                                $no = 1;
+                                $query = "SELECT * FROM tb_rekammedis 
+                    INNER JOIN tb_pasien ON tb_rekammedis.id_pasien = tb_pasien.id_pasien 
+                    INNER JOIN tb_dokter ON tb_rekammedis.id_dokter= tb_dokter.id_dokter
+                    INNER JOIN tb_klinik ON tb_rekammedis.id_klinik= tb_klinik.id_klinik";
+                                $sql_rekammedis = mysqli_query($con, $query) or die (mysqli_error($con));
+                                while($data = mysqli_fetch_array($sql_rekammedis)){ ?>
+                                <tr>
+                                    <td bgcolor="#083d77" style="color: #000000"><?=$no++ ?></td>
+                                    <td bgcolor="#ffffff" style="color: #1e2425"><a href="details.php?id=<?=$data['id_rekammedis']?>" class="btn-link text-dark"><?=$data['nama_pasien']?></a></td>
+                                    <td bgcolor="#ffffff" style="color: #1e2425"><?=$data['keluhan']?></td>
+                                    <td bgcolor="#ffffff" style="color: #1e2425"><?=$data['nama_dokter']?></td>
+                                    
+                                    <td bgcolor="#ffffff" style="color: #1e2425"><?=$data['diagnosa']?></td>
+                                    <td bgcolor="#ffffff" style="color: #1e2425"><?=$data['nama_klinik']?></td>
+                                    <td bgcolor="#ffffff" style="color: #1e2425">
+                                        <?php
+                                            $sql_obat = mysqli_query($con, "SELECT * FROM tb_rekammedis_obat JOIN tb_obat ON tb_rekammedis_obat.id_obat = tb_obat.id_obat WHERE id_rekammedis = '$data[id_rekammedis]'") or die (mysqli_error($con));
+                                            while ($data_obat = mysqli_fetch_array($sql_obat)){
+                                                echo $data_obat['nama_obat']."<br>";
+                                            }
+                                            ?>
+                                    </td>
+                                    <td bgcolor="#ffffff" style="color: #1e2425"><?=tgl_indo($data['tanggal_periksa'])?></td>
+                                    
+                                    <?php
+                                    }
+                                    ?>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
 
   </main><!-- End #main -->
 
