@@ -72,7 +72,7 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="../../assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">Admin</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">Dokter</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -112,31 +112,7 @@
         </a>
       </li><!-- End Components Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" href="../dokter/">
-          <i class="bi bi-journal-text"></i><span>Data Dokter</span>
-        </a>
-
-      </li><!-- End Forms Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" href="../poliklinik">
-          <i class="bi bi-journal-text"></i><span>Data Poliklinik</span>
-        </a>
-
-      </li><!-- End Tables Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#charts-nav" href="../obat/">
-          <i class="bi bi-journal-text"></i><span>Data Obat</span>
-        </a>
-        
-      </li><!-- End Charts Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#icons-nav" href="../rekam-medis/">
-          <i class="bi bi-journal-text"></i><span>Rekam Medis</span>
-        </a>
+      
 
       </li><!-- End Icons Nav -->
 
@@ -168,16 +144,7 @@
                     </div>
                     <div class="card-body">
                         <table class="table cell-vertical-align-middle  table-responsive mb-4">
-                            <tbody>
-                            <tr class="no-b">
-                                <td>
-                                    <a href="import.php" type="button" class="btn btn-success btn-sm">Import Data</a>
-                                </td>
-                                <td>
-                                    <a href="add.php" type="button" class="btn btn-success btn-sm">Tambah Data</a>
-                                </td>
-                            </tr>
-                            </tbody>
+                            
                         </table>
                         <table id="datatables-button" class="table table-bordered table-hover">
                             <thead>
@@ -186,7 +153,6 @@
                                 <th>Nama</th>
                                 <th>Lahir</th>
                                 <th>Alamat</th>
-                                <th>Status</th>
                                 <th>Lainnya</th>
                                 <th><i class="icon icon-settings2"></i></th>
                             </tr>
@@ -194,37 +160,17 @@
                             <tbody>
                             <?php
                             $no = 1;
-                            $sql_pasien = mysqli_query($con, "SELECT * FROM tb_pasien") or die (mysqli_error($con));
-                            while($data = mysqli_fetch_array($sql_pasien)) {
-                            $status = $data['status'];  
-                            ?>
+                            $sql_pasien = mysqli_query($con, "SELECT * FROM tb_pasien WHERE status=''") or die (mysqli_error($con));
+                            while($data = mysqli_fetch_array($sql_pasien)) { ?>
                             <tr>
                                     <td><?=$no++ ?>.</td>
                                     <td><?=$data['nama_pasien']?></td>
                                     <td><?=$data['tempat_lahir']?>, <?=tgl_indo($data['tgl_lahir'])?></td>
                                     <td><?=$data['alamat']?></td>
-                                    <?php if ($status == 'Sudah diproses') {
-                                      ?>
-                                      <td>Sudah diperiksa</td>
-                                    <?php 
-                                    }else {
-                                      ?> 
-                                      <td>Belum diperiksa</td>
-                                   <?php } ?>
-                                    
-                                    
-
                                     <td><a href="details.php?id=<?=$data['id_pasien']?>" class="btn btn-link btn-sm">Lihat Detail</a></td>
-                                    <?php if ($status == 'Sudah diproses') {
-                                      ?>
-                                      <td></td>
-                                    <?php 
-                                    }else {
-                                      ?> 
-                                      <td>
-                                        <a href="delete.php?id=<?=$data['id_pasien']?>" onclick="return confirm('apakah anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm text-white"><i class="glyphicon glyphicon-trash">HAPUS</i></a>
+                                    <td>
+                                        <a href="add.php?id=<?=$data['id_pasien']?>" class="btn btn-danger btn-sm text-white"><i class="glyphicon glyphicon-trash">Proses</i></a>
                                     </td>
-                                   <?php } ?>
                                 <?php
                                 }
                                 ?>

@@ -72,7 +72,7 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="../../assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">Admin</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">Dokter</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -112,32 +112,7 @@
         </a>
       </li><!-- End Components Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" href="../dokter/">
-          <i class="bi bi-journal-text"></i><span>Data Dokter</span>
-        </a>
-
-      </li><!-- End Forms Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" href="../poliklinik">
-          <i class="bi bi-journal-text"></i><span>Data Poliklinik</span>
-        </a>
-
-      </li><!-- End Tables Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#charts-nav" href="../obat/">
-          <i class="bi bi-journal-text"></i><span>Data Obat</span>
-        </a>
-        
-      </li><!-- End Charts Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#icons-nav" href="../rekam-medis/">
-          <i class="bi bi-journal-text"></i><span>Rekam Medis</span>
-        </a>
-
+      
       </li><!-- End Icons Nav -->
 
     </ul>
@@ -176,7 +151,6 @@
                                         <?php
                                         $sql_pasien = mysqli_query($con, "SELECT * FROM tb_pasien WHERE id_pasien = '$id'") or die (mysqli_error($con));
                                         $data = mysqli_fetch_array($sql_pasien);
-                                        $status = $data['status'];
                                         ?>
                                         <h6>Nama Pasien</h6>
                                         <div class="row clearfix">
@@ -402,13 +376,6 @@
                                         <br>
                                         <div class="row clearfix">
                                             <div class="center">
-                                            <?php if ($status == 'Sudah diproses') {
-                                            ?>
-                                            <?php 
-                                            }else {
-                                            ?> 
-                                            <a href="edit.php?id=<?=$data['id_pasien']?>" class="btn btn-success mt-2"><i class="icon-pencil mr-2"></i>Ubah</a>
-                                        <?php } ?>
                                                 <a onclick="myPrint('myprint')" class="btn btn-primary mt-2"><i class="icon-print mr-2"></i>Print</a>
                                             </div>
                                         </div>

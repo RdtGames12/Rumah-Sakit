@@ -19,6 +19,9 @@ session_destroy();
                        if ($role == 'admin') {
                         $_SESSION['role'] = $role;
                         header("location:admin/");
+                       }elseif ($role == 'dokter') {
+                        $_SESSION['role'] = $role;
+                        header("location:dokter/");
                        }
                     }else {
                         echo 'password salah';
