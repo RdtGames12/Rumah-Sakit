@@ -1,6 +1,11 @@
 <?php
-require_once "../_config/config.php";
-include_once('../_header.php');
+ include "../../koneksi/koneksi.php";
+ function tgl_indo($tgl) {
+ $tanggal = substr($tgl, 8, 2);
+ $bulan = substr($tgl, 5, 2);
+ $tahun = substr($tgl, 0, 4);
+ return $tanggal."/".$bulan."/".$tahun;
+}
 ?>
     <div class="page has-sidebar-left height-full">
         <header class="blue accent-3 relative nav-sticky">

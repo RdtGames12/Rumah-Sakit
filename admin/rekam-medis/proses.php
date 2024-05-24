@@ -1,13 +1,9 @@
 <?php 
-require_once "../_config/config.php";
-require "../_assets/libs/vendor/autoload.php";
-
-use Ramsey\Uuid\Uuid;
-use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
+include "../../koneksi/koneksi.php";
 
 
 if(isset($_POST['add'])){
-    $uuid = Uuid::uuid4()->toString();
+    $uuid = rand();
     $pasien = trim(mysqli_real_escape_string($con, $_POST['pasien']));
     $keluhan = trim(mysqli_real_escape_string($con, $_POST['keluhan']));
     $dokter = trim(mysqli_real_escape_string($con, $_POST['dokter']));

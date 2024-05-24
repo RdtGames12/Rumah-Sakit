@@ -171,7 +171,7 @@
                                 <tbody>
                                 <tr class="no-b">
                                     <td>
-                                        <a href="add.php" type="button" class="btn btn-success btn-sm">Tambah Rekammedis</a>
+                                        <a href="add1.php" type="button" class="btn btn-success btn-sm">Tambah Rekammedis</a>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -201,7 +201,7 @@
                                 $sql_rekammedis = mysqli_query($con, $query) or die (mysqli_error($con));
                                 while($data = mysqli_fetch_array($sql_rekammedis)){ ?>
                                 <tr>
-                                    <td bgcolor="#083d77" style="color: #efeeee"><?=$no++ ?></td>
+                                    <td bgcolor="#083d77" style="color: #000000"><?=$no++ ?></td>
                                     <td bgcolor="#ffffff" style="color: #1e2425"><a href="details.php?id=<?=$data['id_rekammedis']?>" class="btn-link text-dark"><?=$data['nama_pasien']?></a></td>
                                     <td bgcolor="#ffffff" style="color: #1e2425"><?=$data['keluhan']?></td>
                                     <td bgcolor="#ffffff" style="color: #1e2425"><?=$data['nama_dokter']?></td>
@@ -218,7 +218,7 @@
                                     </td>
                                     <td bgcolor="#ffffff" style="color: #1e2425"><?=tgl_indo($data['tanggal_periksa'])?></td>
                                     <td bgcolor="#ffffff" class ="text-center">
-                                        <a href="delete.php?id=<?=$data['id_rekammedis']?>" onclick="return confirm('apakah anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-xs " style="background-color: #ff0000; color: white;"><i style="font-size: 20px;" class="glyphicon glyphicon-trash"></i></a>
+                                        <a href="delete.php?id=<?=$data['id_rekammedis']?>" onclick="return confirm('apakah anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-xs " style="background-color: #ff0000; color: white;"><i style="font-size: 20px;" class="glyphicon glyphicon-trash">HAPUS</i></a>
                                     </td>
                                     <?php
                                     }

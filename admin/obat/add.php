@@ -222,14 +222,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <h6>Stok</h6>
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="number" name="stok" id="stok" class="form-control" placeholder="stok" required />
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     <h6>Kadaluarsa</h6>
                                         <div class="col-sm-12">
                                             <div class="form-group">
