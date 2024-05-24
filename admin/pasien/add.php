@@ -99,42 +99,42 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
-      <li class="nav-item">
+    <li class="nav-item">
         <a class="nav-link collapsed" href="../index.php">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
-      </li><!-- End Dashboard Navsss -->
+      </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link" data-bs-target="#components-nav" href="pasien/">
+        <a class="nav-link" data-bs-target="#components-nav" href="index.html">
           <i class="bi bi-journal-text"></i><span>Data Pasien</span>
         </a>
       </li><!-- End Components Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" href="../dokter/">
           <i class="bi bi-journal-text"></i><span>Data Dokter</span>
         </a>
 
       </li><!-- End Forms Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" href="../poliklinik">
           <i class="bi bi-journal-text"></i><span>Data Poliklinik</span>
         </a>
 
       </li><!-- End Tables Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#charts-nav" href="../obat/">
           <i class="bi bi-journal-text"></i><span>Data Obat</span>
         </a>
         
       </li><!-- End Charts Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#icons-nav" href="../rekam-medis/">
           <i class="bi bi-journal-text"></i><span>Rekam Medis</span>
         </a>
 
