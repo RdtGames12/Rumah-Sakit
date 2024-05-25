@@ -164,7 +164,7 @@ if ($_SESSION['role'] != 'admin') {
                 <div class="row p-t-b-10 ">
                     <div class="col">
                         <h4 style="color: black;">
-                            Rekam Medis
+                            Transaksi
                         </h4>
                     </div>
                 </div>
@@ -175,7 +175,7 @@ if ($_SESSION['role'] != 'admin') {
                 <div class="col-md-12">
                     <div class="card my-3 no-b">
                         <div class="card-header white m-3">
-                            <h6>Data Rekam Medis</h6>
+                            <h6>Data Transaksi</h6>
                         </div>
                         <div class="card-body">
                             <table class="table cell-vertical-align-middle  table-responsive mb-4">
@@ -187,8 +187,7 @@ if ($_SESSION['role'] != 'admin') {
                                     <th>Nama Pasien</th>
                                     <th>Obat</th>
                                     <th>Biaya</th>
-                                    
-                                    <th><i class="glyphicon glyphicon-cog"></i></th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -197,7 +196,7 @@ if ($_SESSION['role'] != 'admin') {
                                 $query = "SELECT * FROM tb_tarif 
                     INNER JOIN tb_rekammedis ON tb_tarif.id_rekammedis = tb_rekammedis.id_rekammedis 
                     INNER JOIN tb_pasien ON tb_tarif.id_pasien= tb_pasien.id_pasien
-                    INNER JOIN tb_obat ON tb_tarif.id_obat= tb_obat.id_obat";
+                    INNER JOIN tb_obat ON tb_tarif.id_obat= tb_obat.id_obat WHERE status_pembayaran = ''";
                                 $sql_tarif = mysqli_query($con, $query) or die (mysqli_error($con));
                                 while($data = mysqli_fetch_array($sql_tarif)){ ?>
                                 <tr>
@@ -205,7 +204,67 @@ if ($_SESSION['role'] != 'admin') {
                                     <td><?= $data['nama_pasien']; ?></td>
                                     <td><?= $data['nama_obat']; ?></td>
                                     <td><?= $data['biaya']; ?></td>
-                                    <td></td>
+                                    <td>
+                                        <a href="transaksi.php?id=<?=$data['id_tarif']?>" class="btn btn-success btn-sm text-white"><i class="glyphicon glyphicon-trash">Proses Pembayaran</i></a>
+                                    </td>
+                                    <?php
+                                    }
+                                    ?>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page has-sidebar-left height-full">
+        <header class="blue accent-3 relative nav-sticky">
+            <div class="container-fluid text-white">
+                <div class="row p-t-b-10 ">
+                    <div class="col">
+                        <h4 style="color: black;">
+                            Riwayat
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container-fluid relative animatedParent animateOnce">
+            <div class="tab-content pb-3" id="v-pills-tabContent">
+                <div class="col-md-12">
+                    <div class="card my-3 no-b">
+                        <div class="card-header white m-3">
+                            <h6>Data Riwayat</h6>
+                        </div>
+                        <div class="card-body">
+                            <table class="table cell-vertical-align-middle  table-responsive mb-4">
+                            </table>
+                            <table id="datatables-button" class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Nama Pasien</th>
+                                    <th>Obat</th>
+                                    <th>Biaya</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                $no = 1;
+                                $query = "SELECT * FROM tb_tarif 
+                    INNER JOIN tb_rekammedis ON tb_tarif.id_rekammedis = tb_rekammedis.id_rekammedis 
+                    INNER JOIN tb_pasien ON tb_tarif.id_pasien= tb_pasien.id_pasien
+                    INNER JOIN tb_obat ON tb_tarif.id_obat= tb_obat.id_obat WHERE status_pembayaran = 'Sudah dibayar'";
+                                $sql_tarif = mysqli_query($con, $query) or die (mysqli_error($con));
+                                while($data = mysqli_fetch_array($sql_tarif)){ ?>
+                                <tr>
+                                    <td bgcolor="#083d77" style="color: #000000"><?=$no++ ?></td>
+                                    <td><?= $data['nama_pasien']; ?></td>
+                                    <td><?= $data['nama_obat']; ?></td>
+                                    <td><?= $data['biaya']; ?></td>
                                     <?php
                                     }
                                     ?>
