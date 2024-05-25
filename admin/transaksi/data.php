@@ -138,13 +138,15 @@ if ($_SESSION['role'] != 'admin') {
       </li><!-- End Charts Nav -->
 
       <li class="nav-item">
-        <a class="nav-link" data-bs-target="#icons-nav" href="index.html">
+        <a class="nav-link collapsed" data-bs-target="#icons-nav" href="index.html">
           <i class="bi bi-journal-text"></i><span>Rekam Medis</span>
         </a>
 
       </li><!-- End Icons Nav -->
+
+      <hr>
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" href="transaksi/">
+        <a class="nav-link" data-bs-target="#forms-nav" href="transaksi/">
           <i class="bi bi-journal-text"></i><span>Transaksi</span>
         </a>
 
@@ -185,7 +187,6 @@ if ($_SESSION['role'] != 'admin') {
                                     <th>Nama Pasien</th>
                                     <th>Obat</th>
                                     <th>Biaya</th>
-
                                     
                                     <th><i class="glyphicon glyphicon-cog"></i></th>
                                 </tr>
@@ -197,11 +198,14 @@ if ($_SESSION['role'] != 'admin') {
                     INNER JOIN tb_rekammedis ON tb_tarif.id_rekammedis = tb_rekammedis.id_rekammedis 
                     INNER JOIN tb_pasien ON tb_tarif.id_pasien= tb_pasien.id_pasien
                     INNER JOIN tb_obat ON tb_tarif.id_obat= tb_obat.id_obat";
-                                $sql_rekammedis = mysqli_query($con, $query) or die (mysqli_error($con));
-                                while($data = mysqli_fetch_array($sql_rekammedis)){ ?>
+                                $sql_tarif = mysqli_query($con, $query) or die (mysqli_error($con));
+                                while($data = mysqli_fetch_array($sql_tarif)){ ?>
                                 <tr>
                                     <td bgcolor="#083d77" style="color: #000000"><?=$no++ ?></td>
-                                    
+                                    <td><?= $data['nama_pasien']; ?></td>
+                                    <td><?= $data['nama_obat']; ?></td>
+                                    <td><?= $data['biaya']; ?></td>
+                                    <td></td>
                                     <?php
                                     }
                                     ?>
