@@ -111,7 +111,7 @@ include "../koneksi/koneksi.php";
         </a>
       </li><!-- End Components Nav -->
       <li class="nav-item">
-        <a class="nav-link" data-bs-target="#icons-nav" href="rekam-medis/">
+        <a class="nav-link collapsed" data-bs-target="#icons-nav" href="rekam-medis/">
           <i class="bi bi-journal-text"></i><span>Rekam Medis</span>
         </a>
 
@@ -227,7 +227,7 @@ include "../koneksi/koneksi.php";
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span>Nabil</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
       <!-- All the links in the footer should remain intact. -->

@@ -139,6 +139,12 @@ include "../koneksi/koneksi.php";
 
       </li><!-- End Icons Nav -->
 
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" href="transaksi/">
+          <i class="bi bi-journal-text"></i><span>Transaksi</span>
+        </a>
+
+      </li><!-- End Forms Nav -->
     </ul>
 
   </aside><!-- End Sidebar-->

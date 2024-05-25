@@ -240,6 +240,16 @@ if ($_SESSION['role'] != 'dokter') {
                                                 </div>
                                             </div>
                                         </div>
+                                        <h6>Jumlah Obat</h6>
+                                        <div class="row clearfix">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <input type="number" name="stok" id="stok" class="form-control" required autofocus>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <h6>Tanggal Periksa</h6>
                                         <div class="row clearfix">
                                             <div class="col-sm-12">

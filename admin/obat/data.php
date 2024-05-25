@@ -185,10 +185,11 @@ if ($_SESSION['role'] != 'admin') {
                                 <tr>
                                     <th>No</th>
                                     <th>Nama</th>
+                                    <th>Harga</th>
                                     <th>Keterangan</th>
                                     <th>Dosis</th>
                                     <th>Jenis</th>
-                                    
+                                    <th>Stok</th>
                                     <th>Kadaluarsa</th>
                                     <th></th>
                                     <th><i class="icon icon-settings2"></i></th>
@@ -202,15 +203,16 @@ if ($_SESSION['role'] != 'admin') {
                                 <tr>
                                     <td><?=$no++ ?>.</td>
                                     <td><?=$data['nama_obat']?></td>
+                                    <td><?=$data['harga']?></td>
                                     <td><?=$data['keterangan']?></td>
                                     <td><?=$data['dosis']?></td>
                                     <td><?=$data['jenis']?></td>
-                                    
+                                    <td><?=$data['stok']?></td>
                                     <td><?=tgl_indo($data['kadaluarsa'])?></td>
                                     <td><a href="details.php?id=<?=$data['id_obat']?>">Lihat Detail</a></td>
                                     <td>
                                         <a href="edit.php?id=<?=$data['id_obat']?>" onclick="return confirm('apakah anda yakin ingin mengubah data ini?')" class="btn btn-primary btn-sm text-white"><i class="glyphicon glyphicon-edit">EDIT</i></a>
-                                        <a href="del.php?id=<?=$data['id_obat']?>" onclick="return confirm('apakah anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm text-white"><i class="glyphicon glyphicon-trash">HAPUS</i></a>
+                                        <a href="delete.php?id=<?=$data['id_obat']?>" onclick="return confirm('apakah anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm text-white"><i class="glyphicon glyphicon-trash">HAPUS</i></a>
                                     </td>
                                     <?php
                                     }

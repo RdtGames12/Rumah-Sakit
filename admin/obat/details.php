@@ -180,6 +180,10 @@ if ($_SESSION['role'] != 'admin') {
                                                     <td><h3 class="text-left" style="padding-left: 50px">: <?=$data['nama_obat']?></h3></td>
                                                 </tr>
                                                 <tr>
+                                                    <td><h3 class="text-left" style="padding-left: 65px">Harga</h3></td>
+                                                    <td><h3 class="text-left" style="padding-left: 50px">: <?=$data['harga']?></h3></td>
+                                                </tr>
+                                                <tr>
                                                     <td><h3 class="text-left" style="padding-left: 65px">Keterangan Obat</h3></td>
                                                     <td><h3 class="text-left" style="padding-left: 50px">: <?=$data['keterangan']?></h3></td>
                                                 </tr>
@@ -190,6 +194,10 @@ if ($_SESSION['role'] != 'admin') {
                                                 <tr>
                                                     <td><h3 class="text-left" style="padding-left: 65px">Jenis Obat</h3></td>
                                                     <td><h3 class="text-left" style="padding-left: 50px">: <?=$data['jenis']?></h3></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><h3 class="text-left" style="padding-left: 65px">Stok</h3></td>
+                                                    <td><h3 class="text-left" style="padding-left: 50px">: <?=$data['stok']?></h3></td>
                                                 </tr>
                                                 <tr>
                                                     <td><h3 class="text-left" style="padding-left: 65px">Tanggal Kadaluarsa</h3></td>

@@ -189,6 +189,16 @@ if ($_SESSION['role'] != 'admin') {
                                             </div>
                                         </div>
                                     </div>
+                                    <h6>Harga</h6>
+                                    <div class="row clearfix">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="text" name="harga" id="harga" class="form-control" value="<?=$data['harga']?>" required/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <h6>Keterangan</h6>
                                     <div class="row clearfix">
                                         <div class="col-sm-12">

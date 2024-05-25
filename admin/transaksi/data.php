@@ -143,15 +143,12 @@ if ($_SESSION['role'] != 'admin') {
         </a>
 
       </li><!-- End Icons Nav -->
-
-      <hr>
-
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#icons-nav" href="../transaksi/">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" href="transaksi/">
           <i class="bi bi-journal-text"></i><span>Transaksi</span>
         </a>
 
-      </li><!-- End Icons Nav -->
+      </li><!-- End Forms Nav -->
     </ul>
 
   </aside><!-- End Sidebar-->
@@ -186,45 +183,25 @@ if ($_SESSION['role'] != 'admin') {
                                 <tr>
                                     <th>No.</th>
                                     <th>Nama Pasien</th>
-                                    <th>Keluhan</th>
-                                    <th>Nama Dokter</th>
-                                   
-                                    <th>Diagnosa</th>
-                                    <th>Poliklinik</th>
-                                    <th>Data Obat</th>
-                                    <th>Tanggal Periksa</th>
+                                    <th>Obat</th>
+                                    <th>Biaya</th>
+
+                                    
                                     <th><i class="glyphicon glyphicon-cog"></i></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
                                 $no = 1;
-                                $query = "SELECT * FROM tb_rekammedis 
-                    INNER JOIN tb_pasien ON tb_rekammedis.id_pasien = tb_pasien.id_pasien 
-                    INNER JOIN tb_dokter ON tb_rekammedis.id_dokter= tb_dokter.id_dokter
-                    INNER JOIN tb_klinik ON tb_rekammedis.id_klinik= tb_klinik.id_klinik";
+                                $query = "SELECT * FROM tb_tarif 
+                    INNER JOIN tb_rekammedis ON tb_tarif.id_rekammedis = tb_rekammedis.id_rekammedis 
+                    INNER JOIN tb_pasien ON tb_tarif.id_pasien= tb_pasien.id_pasien
+                    INNER JOIN tb_obat ON tb_tarif.id_obat= tb_obat.id_obat";
                                 $sql_rekammedis = mysqli_query($con, $query) or die (mysqli_error($con));
                                 while($data = mysqli_fetch_array($sql_rekammedis)){ ?>
                                 <tr>
                                     <td bgcolor="#083d77" style="color: #000000"><?=$no++ ?></td>
-                                    <td bgcolor="#ffffff" style="color: #1e2425"><a href="details.php?id=<?=$data['id_rekammedis']?>" class="btn-link text-dark"><?=$data['nama_pasien']?></a></td>
-                                    <td bgcolor="#ffffff" style="color: #1e2425"><?=$data['keluhan']?></td>
-                                    <td bgcolor="#ffffff" style="color: #1e2425"><?=$data['nama_dokter']?></td>
                                     
-                                    <td bgcolor="#ffffff" style="color: #1e2425"><?=$data['diagnosa']?></td>
-                                    <td bgcolor="#ffffff" style="color: #1e2425"><?=$data['nama_klinik']?></td>
-                                    <td bgcolor="#ffffff" style="color: #1e2425">
-                                        <?php
-                                            $sql_obat = mysqli_query($con, "SELECT * FROM tb_rekammedis_obat JOIN tb_obat ON tb_rekammedis_obat.id_obat = tb_obat.id_obat WHERE id_rekammedis = '$data[id_rekammedis]'") or die (mysqli_error($con));
-                                            while ($data_obat = mysqli_fetch_array($sql_obat)){
-                                                echo $data_obat['nama_obat']."<br>";
-                                            }
-                                            ?>
-                                    </td>
-                                    <td bgcolor="#ffffff" style="color: #1e2425"><?=tgl_indo($data['tanggal_periksa'])?></td>
-                                    <td bgcolor="#ffffff" class ="text-center">
-                                        <a href="delete.php?id=<?=$data['id_rekammedis']?>" onclick="return confirm('apakah anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-xs " style="background-color: #ff0000; color: white;"><i style="font-size: 20px;" class="glyphicon glyphicon-trash">HAPUS</i></a>
-                                    </td>
                                     <?php
                                     }
                                     ?>

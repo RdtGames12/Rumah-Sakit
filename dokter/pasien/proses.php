@@ -18,13 +18,25 @@ if(isset($_POST['add'])){
     
     
     $obat = $_POST['obat'];
+    $stok = trim(mysqli_real_escape_string($con, $_POST['stok']));
     foreach($obat as $ob){
+        $ambilstok = mysqli_query($con, "SELECT * FROM tb_obat WHERE id_obat = '$ob'");
+        foreach ($ambilstok as $row) {
+            $stoklama = $row['stok'];
+            $harga = $row['harga'];
+        }
+        $kurangstok = $stoklama - $stok;
+        $biaya = 100000 + $harga;
         mysqli_query($con, "INSERT INTO tb_rekammedis_obat (id_rekammedis, id_obat) values ('$uuid','$ob')") or die (mysqli_error($con));
+        mysqli_query($con, "INSERT INTO tb_tarif (id_tarif, id_rekammedis, id_pasien, id_obat, biaya) values ('NULL', '$uuid', '$pasien', '$ob', '$biaya')");
+        mysqli_query($con, "UPDATE tb_obat SET stok = '$kurangstok' WHERE id_obat = '$ob'");
     }
 
     $id = $_GET['id'];
     $update = mysqli_query($con, "UPDATE tb_pasien SET status='Sudah diproses' WHERE id_pasien='$id'");
     echo "<script>window.location='data.php';</script>";
+
+    
 
 } else if(isset($_POST['edit'])){
     $id = $_POST['id'];

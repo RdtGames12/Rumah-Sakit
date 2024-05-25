@@ -183,6 +183,16 @@ if ($_SESSION['role'] != 'admin') {
                                             </div>
                                         </div>
                                     </div>
+                                    <h6>Harga</h6>
+                                    <div class="row clearfix">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="number" name="harga" id="harga" min="1" class="form-control" placeholder="harga" required/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <h6>Keterangan</h6>
                                     <div class="row clearfix">
                                         <div class="col-sm-12">
@@ -232,6 +242,16 @@ if ($_SESSION['role'] != 'admin') {
                                             <div class="form-group">
                                                 <div class="form-line">
                                                     <input type="date" name="kadaluarsa" id="kadaluarsa" class="form-control" placeholder="<?=date('Y-m-d')?>" required />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h6>Stok</h6>
+                                    <div class="row clearfix">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="number" name="stok" id="stok" min="1" class="form-control" placeholder="stok" required/>
                                                 </div>
                                             </div>
                                         </div>
