@@ -5,7 +5,7 @@ if (isset($_POST['proses'])) {
     $bayar = $_POST['bayar'];
     $biaya = $_POST['biaya'];
     $kembalian = $bayar - $biaya;
-    $query = "UPDATE tb_tarif SET bayar='$bayar', kembalian='$kembalian', status_pembayaran='Sudah Dibayar' WHERE id_tarif='$id'";
+    $query = "UPDATE tb_tarif SET bayar='$bayar', kembalian='$kembalian', date=current_timestamp(), status_pembayaran='Sudah Dibayar' WHERE id_tarif='$id'";
     $pembayaran = mysqli_query($con, $query) or die (mysqli_error($con));
 }
 $id = $_GET['id'];
@@ -170,7 +170,7 @@ if ($_SESSION['role'] != 'admin') {
 
       <hr>
       <li class="nav-item">
-        <a class="nav-link" data-bs-target="#forms-nav" href="../transaksi/">
+        <a class="nav-link" data-bs-target="#forms-nav" href="index.html">
           <i class="bi bi-journal-text"></i><span>Transaksi</span>
         </a>
 

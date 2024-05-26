@@ -138,7 +138,7 @@ if ($_SESSION['role'] != 'admin') {
       </li><!-- End Charts Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#icons-nav" href="index.html">
+        <a class="nav-link collapsed" data-bs-target="#icons-nav" href="../rekam-medis">
           <i class="bi bi-journal-text"></i><span>Rekam Medis</span>
         </a>
 
@@ -146,7 +146,7 @@ if ($_SESSION['role'] != 'admin') {
 
       <hr>
       <li class="nav-item">
-        <a class="nav-link" data-bs-target="#forms-nav" href="transaksi/">
+        <a class="nav-link" data-bs-target="#forms-nav" href="index.html">
           <i class="bi bi-journal-text"></i><span>Transaksi</span>
         </a>
 
@@ -249,6 +249,7 @@ if ($_SESSION['role'] != 'admin') {
                                     <th>Nama Pasien</th>
                                     <th>Obat</th>
                                     <th>Biaya</th>
+                                    <th>Tanggal</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -265,6 +266,7 @@ if ($_SESSION['role'] != 'admin') {
                                     <td><?= $data['nama_pasien']; ?></td>
                                     <td><?= $data['nama_obat']; ?></td>
                                     <td><?= $data['biaya']; ?></td>
+                                    <td><?= $data['date']; ?></td>
                                     <?php
                                     }
                                     ?>
